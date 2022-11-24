@@ -11,7 +11,7 @@ namespace Exercise3
         /*create Nodes for the circular nexted list*/
         public int rollNumber;
         public string name;
-        public Node next; 
+        public Node next;
     }
     class CircularList
     {
@@ -21,6 +21,7 @@ namespace Exercise3
         {
             LAST = null;
         }
+        //Menambahkan method insert
         public void insert()
         {
             int nim;
@@ -35,7 +36,7 @@ namespace Exercise3
             nodebaru.name = nm;
 
             //Node ditambahkan sebagai node pertama
-            if (LAST == null || nim <= LAST.rollNumber)
+            if (LAST == null || nim != LAST.rollNumber)
             {
                 if ((LAST != null || nim == LAST.rollNumber))
                 {
@@ -45,49 +46,66 @@ namespace Exercise3
                 LAST = nodebaru;
                 return;
             }
+            //Method untuk menghapus variabel tertentu didalam list
+            public bool delete(int rollNo)
+            {
+                Node previous, current;
+                previous = current = null;
+                //check apakah node yang dimaksud ada di dalam list atau tidak
+                if (Search(nim, ref previous, ref current) == false)
+                    return false;
+                previous.next = current.next;
+                if (current == LAST)
+
+                    LAST = LAST.next;
+                return true;
+
+            }
 
             public bool Search(int rollNo, ref Node previous, ref Node current)
-        /*searches for the specified node*/
-        {
-            for (previous = current = LAST.next; current != LAST; previous =
-                current, current = current.next)
+            /*searches for the specified node*/
             {
-                if (rollNo == current.rollNumber)
-                    return (true);/*return true if the node is founds*/
-            }
-            public bool listEmpty()
-            {
-                if (LAST == null)
-                    return true;
-                else
-                    return false;
-            }
-
-            public void traverse()/*Traverse all the nodes of the list*/
-            {
-                if (listEmpty())
-                    Console.WriteLine("\nList is empty");
-                else
+                for (previous = current = LAST.next; current != LAST; previous =
+                    current, current = current.next)
                 {
-                    Console.WriteLine("\nRecord in the list are:\n");
-                    Node currentNode;
-                    currentNode = LAST.next;
-                    while (currentNode != LAST)
-                    {
-                        Console.Write(currentNode.rollNumber + "  " + currentNode.name + "\n");
-                        currentNode = currentNode.next;
-                    }
-                    Console.Write(LAST.rollNumber + "     " + LAST.name + "\n");
+                    if (rollNo == current.rollNumber)
+                        return (true);/*return true if the node is founds*/
                 }
-            }
-            public void firstNode()
-            {
-                if (listEmpty())
-                    Console.WriteLine("\nList is Empty");
-                else
-                    Console.WriteLine("\nThe first record in the list is:\n\n " +
-                        LAST.next.rollNumber + "    " + LAST.next.name);
-            }
+                public bool listEmpty()
+                {
+                    if (LAST == null)
+                        return true;
+                    else
+                        return false;
+                }
+
+                public void traverse()/*Traverse all the nodes of the list*/
+                {
+                    if (listEmpty())
+                        Console.WriteLine("\nList is empty");
+                    else
+                    {
+                        Console.WriteLine("\nRecord in the list are:\n");
+                        Node currentNode;
+                        currentNode = LAST.next;
+                        while (currentNode != LAST)
+                        {
+                            Console.Write(currentNode.rollNumber + "  " + currentNode.name + "\n");
+                            currentNode = currentNode.next;
+                        }
+                        Console.Write(LAST.rollNumber + "     " + LAST.name + "\n");
+                    }
+                }
+                public void firstNode()
+                {
+                    if (listEmpty())
+                        Console.WriteLine("\nList is Empty");
+                    else
+                        Console.WriteLine("\nThe first record in the list is:\n\n " +
+                            LAST.next.rollNumber + "    " + LAST.next.name);
+                }
+    class Program
+        {
             static void Main(string[] args)
             {
                 CircularList obj = new CircularList();
@@ -130,12 +148,12 @@ namespace Exercise3
 
                                     }
                                 }
-                                break ;
+                                break;
                             case '3':
                                 {
                                     obj.firstNode();
                                 }
-                                break;;
+                                break; ;
                             case '4':
                                 return;
                             default:
@@ -154,3 +172,8 @@ namespace Exercise3
         }
     }
 }
+
+        }
+
+
+               
