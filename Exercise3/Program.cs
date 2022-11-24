@@ -21,8 +21,32 @@ namespace Exercise3
         {
             LAST = null;
         }
-        
-        public bool Search(int rollNo, ref Node previous, ref Node current)
+        public void insert()
+        {
+            int nim;
+            string nm;
+            Console.WriteLine("\nMasukkan nomer Mahasiswa: ");
+            nim = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("\nMasukkan nama Mahasiswa: ");
+            nm = Console.ReadLine();
+
+            Node nodebaru = new Node();
+            nodebaru.rollNumber = nim;
+            nodebaru.name = nm;
+
+            //Node ditambahkan sebagai node pertama
+            if (LAST == null || nim <= LAST.rollNumber)
+            {
+                if ((LAST != null || nim == LAST.rollNumber))
+                {
+                    Console.WriteLine("\nNomer mahasiswa sama tidak diizinkan ");
+                }
+                nodebaru.next = LAST;
+                LAST = nodebaru;
+                return;
+            }
+
+            public bool Search(int rollNo, ref Node previous, ref Node current)
         /*searches for the specified node*/
         {
             for (previous = current = LAST.next; current != LAST; previous =
@@ -85,8 +109,45 @@ namespace Exercise3
                                     obj.traverse();
                                 }
                                 break;
-                          
+                            case '2':
+                                {
+                                    if (obj.listEmpty() == true)
+                                    {
+                                        Console.WriteLine("\nList is empty");
+                                        break;
+                                    }
+                                    Node prev, curr;
+                                    prev = curr = null;
+                                    Console.Write("\nEnter the roll number of the student whose record is to be searched :");
+                                    int num = Convert.ToInt32(Console.ReadLine());
+                                    if (obj.Search(num, ref prev, ref curr) == false)
+                                        Console.WriteLine("\nRecord found");
+                                    else
+                                    {
+                                        Console.WriteLine("\nRecord found");
+                                        Console.WriteLine("\nRoll number: " + curr.rollNumber);
+                                        Console.WriteLine("\nName: " + curr.name);
+
+                                    }
+                                }
+                                break ;
+                            case '3':
+                                {
+                                    obj.firstNode();
+                                }
+                                break;;
+                            case '4':
+                                return;
+                            default:
+                                {
+                                    Console.WriteLine("Invalid option");
+                                    break;
+                                }
                         }
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e.ToString());
                     }
                 }
             }
