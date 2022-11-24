@@ -6,8 +6,12 @@ using System.Threading.Tasks;
 
 namespace Exercise3
 {
-    internal class Program
+    class Node
     {
+        /*create Nodes for the circular nexted list*/
+        public int rollNumber;
+        public string name;
+        public Node next;
         static void Main(string[] args)
         {
         }
