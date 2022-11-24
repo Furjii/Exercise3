@@ -46,7 +46,20 @@ namespace Exercise3
                 else
                 {
                     Console.WriteLine("\nRecord in the list are:\n");
+                    Node currentNode;
+                    currentNode = LAST.next;
+                    while (currentNode != LAST)
+                    {
+                        Console.Write(currentNode.rollNumber + "  " + currentNode.name + "\n");
+                        currentNode = currentNode.next;
+                    }
+                    Console.Write(LAST.rollNumber + "     " + LAST.name + "\n");
                 }
+            }
+            public void firstNode()
+            {
+                if (listEmpty())
+                    Console.WriteLine("\nList is Empty");
             }
         }
     }
