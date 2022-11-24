@@ -25,15 +25,15 @@ namespace Exercise3
         public void insert()
         {
             int rollNumber;
-            string rollNumber;
+            string rollno;
             Console.WriteLine("\nMasukkan : ");
             rollNumber = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("\nMasukkan nama: ");
-            rollNumber = Console.ReadLine();
+            rollNumber = Console.Read();
 
             Node nodebaru = new Node();
             nodebaru.rollNumber = rollNumber;
-            nodebaru.name = rollNumber;
+            nodebaru.name = rollno;
 
             //Node ditambahkan sebagai node pertama
             if (LAST == null || rollNumber != LAST.rollNumber)
