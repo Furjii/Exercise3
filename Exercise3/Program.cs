@@ -24,23 +24,23 @@ namespace Exercise3
         //Menambahkan method insert
         public void insert()
         {
-            int nim;
-            string nm;
-            Console.WriteLine("\nMasukkan nomer Mahasiswa: ");
-            nim = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("\nMasukkan nama Mahasiswa: ");
-            nm = Console.ReadLine();
+            int rollNumber;
+            string rollNumber;
+            Console.WriteLine("\nMasukkan : ");
+            rollNumber = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("\nMasukkan nama: ");
+            rollNumber = Console.ReadLine();
 
             Node nodebaru = new Node();
-            nodebaru.rollNumber = nim;
-            nodebaru.name = nm;
+            nodebaru.rollNumber = rollNumber;
+            nodebaru.name = rollNumber;
 
             //Node ditambahkan sebagai node pertama
-            if (LAST == null || nim != LAST.rollNumber)
+            if (LAST == null || rollNumber != LAST.rollNumber)
             {
-                if ((LAST != null || nim == LAST.rollNumber))
+                if ((LAST != null || rollNumber == LAST.rollNumber))
                 {
-                    Console.WriteLine("\nNomer mahasiswa sama tidak diizinkan ");
+                    Console.WriteLine("\n ");
                 }
                 nodebaru.next = LAST;
                 LAST = nodebaru;
@@ -51,8 +51,7 @@ namespace Exercise3
             {
                 Node previous, current;
                 previous = current = null;
-                //check apakah node yang dimaksud ada di dalam list atau tidak
-                if (Search(nim, ref previous, ref current) == false)
+                if (Search(rollNo, ref previous, ref current) == false)
                     return false;
                 previous.next = current.next;
                 if (current == LAST)
